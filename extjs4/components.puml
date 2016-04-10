@@ -1,0 +1,32 @@
+@startuml
+node Components
+node Container
+node Component
+cloud layout
+
+artifact hbox
+artifact vbox
+artifact card
+artifact fit
+artifact border
+
+
+Components -- Container
+Components -- Component
+
+Container --0 layout
+layout --> hbox
+layout --> vbox
+layout --> card
+layout --> fit
+layout --> border
+
+note top of Components: 所有UI组件都是Components
+note bottom of Container: 能容纳其他Components的是容器
+note bottom of Component: 不能容纳的是非容器
+note left of layout: 容器内的items怎么分布就是布局;\n官方提供有16种
+
+
+
+
+@enduml

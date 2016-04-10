@@ -1,0 +1,35 @@
+@startuml
+
+actor 买票人 as User
+participant 购票程序 as Application
+participant 票务系统 as System #red
+
+
+User -> Application: 输入目的地址
+alt 目的地址合法
+	Application --> User: 提示输入购买票数
+	User -> Application: 输入购买票数
+	Application -> System: 查询所余票数
+	alt 有余票
+		System --> Application: 返回正确
+		Application --> User: 提示插入所需金额
+		User -> Application: 插入card或者money
+		activate Application
+
+		Application -> System: 更新剩余票信息
+		activate System
+		System --> Application: 更新成功
+		deactivate System
+
+		Application --> User: 购票成功，出票
+		deactivate Application
+	else 无票
+		System --> Application: 返回错误
+		Application --> User: 提示没有票了
+	end
+
+else 错误输入
+	Application --> User: 提示地址错误
+end
+
+@enduml

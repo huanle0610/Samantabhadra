@@ -1,0 +1,11 @@
+@startuml
+Actor User
+User -> Browser: Input Web Url http://www.abc.com
+Browser -> WebServer: Request Web Page
+WebServer -> JMW: Get Apps List and params(REST API)
+JMW -> WebServer: Return Apps List(etx://url)
+WebServer -> Browser: Output Web page(links list)
+User -> Browser: click a link(etx://url)
+Browser -> NativeClient: Call native client
+NativeClient -> JMW: Connect and Open App
+@enduml
