@@ -1,4 +1,4 @@
-Share knowledge about lnmp/extjs4
+#Share knowledge about lnmp/extjs4
 关于PlantUML,请参考：
 http://plantuml.com/running.html
 http://www.phperz.com/article/15/1225/177118.html
