@@ -1,0 +1,32 @@
+@startuml
+
+skinparam package<<Layout>> {
+  borderColor Transparent
+  backgroundColor Transparent
+  fontColor Transparent
+  stereotypeFontColor Transparent
+}
+skinparam shadowing false
+
+package foo <<Layout>> {
+    storage "Data Source" as DS
+    storage "Proxy" as P
+}
+storage "Reader" as R
+storage "Writer" as W
+storage "Records" as Rs
+storage Consumer
+
+database "Data Store" as Store
+
+
+DS -r-> P
+P .l.> DS
+P -u-> R
+W .u.>> P
+R -> Rs
+
+Rs -d-> Store
+Store .l.>> W
+Store -> Consumer
+@enduml
