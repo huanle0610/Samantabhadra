@@ -1,0 +1,36 @@
+@startuml
+title 服务
+left to right direction
+
+
+cloud "Internet" as internet
+
+
+node host{
+    agent "FTP\nDaemon" as ftpd
+    agent "SSH\nDaemon" as sshd
+    agent "SMTP\nDaemon" as postfix
+    agent "HTTP\nDaemon" as nginx
+}
+
+internet --> ftpd: 上传下载文件
+internet --> sshd
+internet --> postfix: 发邮件
+internet --> nginx
+
+note right of ftpd: 监听端口21 需要开机启动
+note right of sshd: 监听端口22 需要开机启动
+note right of postfix: 监听端口25 需要开机启动
+note right of nginx: 监听端口80 需要开机启动
+
+legend center
+    所有的*nix系统都有一个 /etc/services 列出公认端口
+   13 # The latest IANA port assignments can be gotten from
+   14 #       http://www.iana.org/assignments/port-numbers
+   15 # The Well Known Ports are those from 0 through 1023.
+   16 # The Registered Ports are those from 1024 through 49151
+   17 # The Dynamic and/or Private Ports are those from 49152 through 65535
+
+   互联网地址编码分配机构（Internet Assigned Numbers Authority）
+endlegend
+@enduml

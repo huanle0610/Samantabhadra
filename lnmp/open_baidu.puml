@@ -6,16 +6,23 @@ Actor User
 autonumber
 User -> 浏览器: 输入http://www.baidu.com
 
+activate 浏览器
 group DNS查询
 浏览器 -> DNS服务器: www.baidu.com这台主机的IP是多少？
+
+activate DNS服务器
 DNS服务器 --> 浏览器: www.baidu.com的IP是119.75.217.109
+deactivate DNS服务器
+
 end
 
 box "百度服务器" #lightblue
 participant 百度Web服务器1 as BWS1
 浏览器 -[#0000FF]> BWS1: 真正发请求给百度Web服务器
 
+activate BWS1
 BWS1 --> 浏览器: 百度首页
+deactivate BWS1
 
 participant 百度Web服务器2 #FFF
 |||
@@ -23,14 +30,21 @@ participant 百度Web服务器2 #FFF
 |||
 alt 已简化，其实与上面请求www.baidu.com一样要DNS查询
 浏览器 -> 百度图片服务器1: 请求百度logo
+
+activate 百度图片服务器1
 百度图片服务器1 --> 浏览器: 返回百度logo
+deactivate 百度图片服务器1
 
 浏览器 -> 百度图片服务器2: 请求新闻图片
+activate 百度图片服务器2
 百度图片服务器2 --> 浏览器: 返回新闻图片
+deactivate 百度图片服务器2
+
 end
 end box
 
 浏览器 --> User: 加载完毕
+deactivate 浏览器
 
 
 note right of BWS1: 我IP是119.75.217.109,今天的主唱

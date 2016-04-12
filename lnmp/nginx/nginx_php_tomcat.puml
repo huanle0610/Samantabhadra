@@ -1,0 +1,41 @@
+@startuml
+title Nginx connection types
+left to right direction
+
+cloud "Internet" as internet
+component "Nginx\n端口80" as nginx
+
+
+component application{
+    agent "php\n端口9000" as php
+    folder "index.html\nace.jpg\nstyle.css" as files
+    agent "Tomcat\n端口8080" as tomcat
+}
+
+
+internet --> nginx: www.abc.com
+internet --> tomcat: www.abc.com:8080
+
+
+nginx -r-> php: fastcgi
+nginx -r-> tomcat: proxy
+
+nginx -r-> files: 直接读取返回
+
+legend center
+   There are 3 common connection types for HTTP: "proxy", "uwsgi", "fastcgi".
+   WSGI是一种Web服务器网关接口。它是一个Web服务器（如nginx）与应用服务器
+   （如uWSGI服务器）通信的一种规范。
+   proxy 代理，这里一般指反向代理。
+   　什么是CGI
+   　　CGI全称是“公共网关接口”(Common Gateway Interface)，HTTP服务器与你的或其它机器上的程序进行“交谈”
+   的一种工具，其程序须运行在网络服务器上。
+   　　CGI可以用任何一种语言编写，只要这种语言具有标准输入、输出和环境变量。如php,perl,tcl等
+      什么是FastCGI
+　　FastCGI像是一个常驻(long-live)型的CGI，它可以一直执行着，只要激活后，不会每次都要花费时间去fork一次
+(这是CGI最为人诟病的fork-and-execute 模式)。它还支持分布式的运算, 即 FastCGI 程序可以在网站服务器以外的
+主机上执行并且接受来自其它网站服务器来的请求。
+endlegend
+
+
+@enduml

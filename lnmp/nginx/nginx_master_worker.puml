@@ -1,0 +1,34 @@
+@startuml
+
+storage Nginx {
+     node master
+     node worker1
+     node worker2
+     node worker3
+     node worker4
+
+     master --> worker1: 信号
+     master --> worker2: 信号
+     master --> worker3: 信号
+     master --> worker4: 信号
+}
+
+agent client1
+agent client2
+agent client3
+agent client4
+agent client5
+agent client6
+agent client7
+agent client8
+
+client1 -u-> worker1: 连接
+client2 -u-> worker1: 连接
+client3 -u-> worker2: 连接
+client4 -u-> worker2: 连接
+client5 -u-> worker3: 连接
+client6 -u-> worker3: 连接
+client7 -u-> worker4: 连接
+client8 -u-> worker4: 连接
+
+@enduml

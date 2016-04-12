@@ -1,0 +1,34 @@
+@startuml
+title 超级服务
+
+left to right direction
+
+
+cloud "Internet" as internet
+
+
+node host{
+
+
+    storage "Xinetd\n开机要启动" as xinetd
+    storage "HTTP\nDaemon\n开机要启动" as nginx
+
+    package "有事打电话，开机不用启动" {
+        agent "FTP\nDaemon" as ftpd
+        agent "SSH\nDaemon" as sshd
+        agent "SMTP\nDaemon" as postfix
+    }
+}
+
+note right of xinetd: 监听端口21、22、25
+note right of nginx: 监听端口80
+
+
+xinetd ..> ftpd: 呼叫
+xinetd ..> sshd
+xinetd ..> postfix: 呼叫
+
+internet -> xinetd
+
+
+@enduml
