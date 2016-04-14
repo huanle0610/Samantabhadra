@@ -1,6 +1,8 @@
 # 常识
 linux是内核
+
 我们用到的，通常是某个distribution。
+
 常见的distributions:
 
 - rhel
