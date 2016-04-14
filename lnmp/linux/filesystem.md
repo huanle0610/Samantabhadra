@@ -9,15 +9,19 @@
 ## 文件类型
 常见类型： 普通文件(-)、目录文件(d)、字符设备文件(c)和块设备文件(b)、链接文件等
 还有 pipe socket...
+```html
 [演示] ll -al
 total 12
 drwxr-xr-x   2 root root 4096 Apr 15 00:24 .
 dr-xr-x---. 37 root root 4096 Apr 15 00:07 ..
 lrwxrwxrwx   1 root root    5 Apr 15 00:23 a1.txt -> a.txt
 **-rw-r--r--**   1 **root** **root**    4 Apr 15 00:04 a.txt
+```
 
 ## 文件权限
+```html
 **-rw-r--r--**   1 **root** **root** a.txt
+```
 1+3(Owner权限) + 3(Group权限) + 3(Other权限) = 10位
 
 r(Read)w(Write)x(execute)
@@ -29,7 +33,7 @@ chown  -change file owner and group
 chgrp  -change group ownership
 
 ----------------
-
+```html
 [演示] echo 124 > a.txt # 写124 到文件a.txt
 [演示] ls
 a.txt
@@ -56,6 +60,7 @@ a.jpg: ASCII text
 
 [演示] ls -al /dev/xvda1
 brw-rw---- 1 root disk 202, 1 Mar 10 01:01 /dev/xvda1
+```
 
 ## 扩展名
 在Windows底下， 能被执行的文件扩展名通常是 .com .exe .bat等等，
@@ -64,9 +69,11 @@ brw-rw---- 1 root disk 202, 1 Mar 10 01:01 /dev/xvda1
 不过，可以被执行跟可以执行成功是不一样的～
 
 ## 目录树
-ls 
+```html
+[演示] ls 
 bin   dev   home  lib64       media  opt   root  selinux  sys  usr
 boot  etc   lib   lost+found  mnt    proc  sbin  srv      tmp  var
+```
 
 
 ![目录树](http://tldp.org/LDP/intro-linux/html/images/FS-layout.png "目录树")
