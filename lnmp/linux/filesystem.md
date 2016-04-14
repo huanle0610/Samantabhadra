@@ -27,10 +27,11 @@ lrwxrwxrwx   1 root root    5 Apr 15 00:23 a1.txt -> a.txt
 r(Read)w(Write)x(execute)
 
 x对文件是可执行；对目录是可进入
-
+```html
 chmod  -change file mode bits
 chown  -change file owner and group
 chgrp  -change group ownership
+```
 
 ----------------
 ```html
