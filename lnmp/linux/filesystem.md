@@ -1,5 +1,6 @@
 #文件系统
 **一切皆文件**
+
 "On a UNIX system, everything is a file; if something is not a file, it is a process."
 图片是文件
 文本是文件
