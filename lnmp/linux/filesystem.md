@@ -2,10 +2,14 @@
 **一切皆文件**
 
 "On a UNIX system, everything is a file; if something is not a file, it is a process."
+
 图片是文件
+
 文本是文件
+
 程序是文件
-设备也文件
+
+设备也是文件
 
 ## 文件类型
 常见类型： 普通文件(-)、目录文件(d)、字符设备文件(c)和块设备文件(b)、链接文件等
