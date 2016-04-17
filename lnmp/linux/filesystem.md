@@ -1,10 +1,15 @@
 #文件系统
 **一切皆文件**
+
 "On a UNIX system, everything is a file; if something is not a file, it is a process."
+
 图片是文件
+
 文本是文件
+
 程序是文件
-设备也文件
+
+设备也是文件
 
 ## 文件类型
 常见类型： 普通文件(-)、目录文件(d)、字符设备文件(c)和块设备文件(b)、链接文件等
@@ -27,10 +32,11 @@ lrwxrwxrwx   1 root root    5 Apr 15 00:23 a1.txt -> a.txt
 r(Read)w(Write)x(execute)
 
 x对文件是可执行；对目录是可进入
-
+```html
 chmod  -change file mode bits
 chown  -change file owner and group
 chgrp  -change group ownership
+```
 
 ----------------
 ```html
