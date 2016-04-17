@@ -99,3 +99,10 @@ MariaDB [f1]> show tables;
 +---------------------------+
 7 rows in set (0.00 sec)
 ```
+
+
+## [常用语句](sql_statement.pdf)
+
+## [cookbook note](cookbook_note.md)
+
+## [时间函数](function_date.md)

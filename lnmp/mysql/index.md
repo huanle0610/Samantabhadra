@@ -1,4 +1,4 @@
-# Database
+# 数据库 Database
 
 解决数据的持久化问题.
 
@@ -31,7 +31,7 @@ DBMS（database management system）数据库管理系统 是一个软件，可�
 
 ---
 ## 关系数据库
-relational DBMS
+Relational Database
 常用的关系数据库有Oracle，Informix，MySQL，SyBase等.
 
 
@@ -63,6 +63,7 @@ Object Oriented Data Base System
 
 ## [重要概念](import_concepts.md)
 
+## [ER](er.md)
 
 ## [SQL](sql.md)
 Structured Query  Language 结构化查询语言
