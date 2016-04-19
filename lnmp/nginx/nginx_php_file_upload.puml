@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+Browser -> Nginx: 上传到nginx
+activate Nginx
+
+Nginx -> PHP: 交给php
+activate PHP
+
+PHP -> PHP: 处理文件
+
+PHP --> Nginx: 回复
+deactivate PHP
+
+Browser <-- Nginx: 处理完成
+deactivate Nginx
+
+@enduml
