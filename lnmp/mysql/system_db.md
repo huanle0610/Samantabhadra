@@ -53,3 +53,4 @@ MariaDB [f1]> SELECT table_name, column_name, COLUMN_NAME, data_type  FROM infor
 - ...
 
 [system-database官方说明](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)
+[information_schema官方说明](https://dev.mysql.com/doc/refman/5.7/en/information-schema.html)
