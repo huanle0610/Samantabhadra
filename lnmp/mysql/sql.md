@@ -106,3 +106,11 @@ MariaDB [f1]> show tables;
 ## [cookbook note](cookbook_note.md)
 
 ## [时间函数](function_date.md)
+
+## [字符串函数](function_str.md)
+
+## 官方演示库
+[下载sakila-db](sakila-db.zip)
+1. 解压
+2. 参考readme： 导入 sakila-db; 安装mysql-workbench
+3. 练习查询
