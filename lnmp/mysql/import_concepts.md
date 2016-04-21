@@ -78,7 +78,7 @@ select cat_id, avg(shop_price) as avg_price from goods group by by cat_id;
 
 
 
-### 存储过程
+### [存储过程](trigger_sp.md)
 Stored procedure, SP
 
 一些由MySQL服务器直接存储和执行的定制过程或函数。 
@@ -98,7 +98,7 @@ Stored procedure, SP
 程序可以不知道数据库结构，只要调用相关SP就可以了。
 
 
-#### 触发器 trigger
+#### 触发器 [trigger](trigger_sp.md)
 是在INSERT UPDATE DELETE命令之前或之后对SQL命令或SP的自动调用。
 
 触发器（trigger）是数据库提供给程序员和数据分析员来保证数据完整性的一种方法，
