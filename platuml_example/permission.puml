@@ -1,0 +1,60 @@
+@startuml
+
+title 权限
+
+storage root
+storage Money
+
+storage System
+storage Reports
+storage Users
+
+entity "User Add" as addUser
+entity "User Delete" as delUser
+entity "User Edit" as editUser
+
+addUser -u-> Users
+delUser -u-> Users
+editUser -u-> Users
+
+
+storage Financial
+storage General
+storage Security
+
+Financial -u-> Reports
+General -u-> Reports
+Security -u-> Reports
+
+
+entity "Financial Report Generate" as createFinancialReport
+entity "Financial Report Print" as printFinancialReport
+entity "Financial Report Mail" as mailFinancialReport
+
+createFinancialReport -u-> Financial
+printFinancialReport -u-> Financial
+mailFinancialReport -u-> Financial
+
+
+storage Order
+storage Transfer
+storage Rooms
+
+Order -u-> Money
+Transfer -u-> Money
+
+
+Rooms -u-> System
+Users -u-> System
+
+
+System -u-> root
+Money -u-> root
+Reports -u-> root
+
+
+
+
+
+
+@enduml

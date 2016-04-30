@@ -52,11 +52,11 @@ http {
             listen       80;
             server_name  www.android-doc.org;
             root C:/Android/android-sdk/docs ;
+            index  index.html index.htm index.php;
     
             charset utf-8;
             location / {
                 autoindex on;
-                index  index.html index.htm index.php;
             }
     }
 
@@ -97,4 +97,7 @@ http {
 }
 ```
 
-# [支持php](nginx_php.md)
+## [支持php](nginx_php.md)
+
+## 参考
+[config pitfalls](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/)

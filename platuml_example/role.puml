@@ -1,0 +1,42 @@
+@startuml
+
+title 角色
+
+storage root
+storage CEO
+
+storage Operations
+
+
+storage Financial
+
+storage Sales
+storage Marketing
+storage Payroll
+
+Financial -d-> Sales
+Financial -d-> Marketing
+Financial -d-> Payroll
+
+
+storage IT
+storage Network
+storage Admin
+storage Security
+
+IT -d-> Network
+IT -d-> Security
+IT -d-> Admin
+
+
+root -d-> CEO
+
+CEO -d-> Operations
+CEO -d-> Financial
+CEO -d-> IT
+
+
+
+
+
+@enduml
