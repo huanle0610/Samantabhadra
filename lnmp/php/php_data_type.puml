@@ -1,0 +1,26 @@
+@startuml
+
+left to right direction
+
+node "数据类型" as node1
+component "标量" as node2
+component "复合类型" as node3
+component "特殊类型" as node4
+
+interface "object" as obj
+node1 -- node2
+node1 -. node3
+node1 -- node4
+
+node2 -d- boolean
+node2 -d- integer
+node2 -d- float
+node2 -d- string
+
+node3 -d- array
+node3 -d- obj
+
+node4 -d- null
+node4 -d- resource
+
+@enduml

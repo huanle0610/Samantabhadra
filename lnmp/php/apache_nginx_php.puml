@@ -1,0 +1,33 @@
+@startuml
+title Apache Nginx 处理php差异
+left to right direction
+ "浏览器" as browser
+
+node Apache {
+    [mod_php]
+}
+
+browser ---> Apache: http://www.abc.com/a.php
+Apache ...> browser
+
+
+
+package "Nginx + PHP-FPM"  as nginx_php {
+    node Nginx
+    node "PHP-FPM" as php_fpm
+}
+
+browser ---> Nginx: http://www.abc.com/a.php
+
+Nginx -> php_fpm
+php_fpm .> Nginx
+Nginx .> browser
+
+legend center
+    Apache启动就可正常处理php请求；
+    而对Nginx来说，还需要单独启动PHP-FPM;
+    从系统级别看，apache的实现需要启动一个服务，
+    而nginx的实现需要启动两个服务(nginx、php-fpm)
+endlegend
+
+@enduml
