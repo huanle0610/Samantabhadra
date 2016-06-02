@@ -88,7 +88,7 @@ client_max_body_size 200M;
 - 504 Gateway Time-out
 第二步出错， php未能在nginx规定的时间内返回内容。解决就是让nginx多等。
 
-下面的配置应该在 location ~* \.php$ block, 五分钟超时。
+下面的配置应该在 location ~* \.php$ block, 180s超时。
 
 ```html
 fastcgi_read_timeout 180;

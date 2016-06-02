@@ -63,3 +63,15 @@ HAVING COUNT(
     ```html
     sudo service mysql restart
     ```
+
+
+### 常见问题
+
+#### 无法使用IP访问MySQL本地数据库
+MYSQL数据库缺省安装后，其默认用户名ROOT如果只能以<localhost>或<127.0.0.1>方式访问主机，即通过外部IP地址访问返回如下内容：
+
+    ERROR 1130 (): #HY000 Host 'XXXXXX' is not allowed to connect to this MySQL server
+    
+解决：
+
+    GRANT ALL PRIVILEGES ON TABLE_NAME.* TO 'USER_NAME'@'%' IDENTIFIED BY 'USERS_PASSWORD';
