@@ -24,3 +24,10 @@
 ## [PHP](lnmp/php/index.md)
 
 ## [Ext JS4](extjs4/index.md)
+
+---
+
+## Other
+
+### English
+#### [Classes](english/classes/index.md)

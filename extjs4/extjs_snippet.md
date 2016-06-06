@@ -21,8 +21,11 @@ Ext.Ajax.request({
 
 ### direct超时设置
 
+```html
 Ext.app.REMOTING_API.timeout = 100000;
+
 Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
+```
 
 
 ## 允许GRID复制文字
@@ -31,4 +34,11 @@ Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
 viewConfig: {
     enableTextSelection: true
 },
+```
+
+
+## 动态加载css
+
+```html
+Ext.util.CSS.swapStyleSheet('role_css', 'resources/css/role.css');
 ```
