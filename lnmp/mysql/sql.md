@@ -109,6 +109,8 @@ MariaDB [f1]> show tables;
 
 ## [字符串函数](function_str.md)
 
+## [特殊需求](special.md)
+
 ## 官方演示库
 [下载sakila-db](sakila-db.zip)
 1. 解压
