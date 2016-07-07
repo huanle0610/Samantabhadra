@@ -29,5 +29,6 @@
 
 ## Other
 
+### [Life](life/note.md)
 ### English
 #### [Classes](english/classes/index.md)

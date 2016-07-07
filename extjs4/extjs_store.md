@@ -15,6 +15,65 @@ proxy的5种不同实现(3种服务器端 + 2种客户端)
 其中前两种为最常用到的，在Dragonfly中则广泛使用第二种Direct的proxy.
 
 
+## Model 
+
+从store的定义(The Store class encapsulates a client side cache of Model objects. )
+
+可知store是在客户端对模型集合的缓存。
+
+模型可以是显式(explicit)定义的一个模型，也可以是含蓄(implicit)声明的模型。
+
+* 显式
+
+```html
+ Ext.define('User', {
+     extend: 'Ext.data.Model',
+     fields: [
+         {name: 'firstName', type: 'string'},
+         {name: 'lastName',  type: 'string'},
+         {name: 'age',       type: 'int'},
+         {name: 'eyeColor',  type: 'string'}
+     ]
+ });
+
+ var myStore = Ext.create('Ext.data.Store', {
+     model: 'User',
+     proxy: {
+         type: 'ajax',
+         url: '/users.json',
+         reader: {
+             type: 'json',
+             root: 'users'
+         }
+     },
+     autoLoad: true
+ });
+```
+
+* 含蓄
+```html
+ var myStore = Ext.create('Ext.data.Store', {
+     fields: [
+              {name: 'firstName', type: 'string'},
+              {name: 'lastName',  type: 'string'},
+              {name: 'age',       type: 'int'},
+              {name: 'eyeColor',  type: 'string'}
+          ],
+     proxy: {
+         type: 'ajax',
+         url: '/users.json',
+         reader: {
+             type: 'json',
+             root: 'users'
+         }
+     },
+     autoLoad: true
+ });
+```
+
+**对用fields含蓄创建模型的方式建议用于2、3个字段的简单store上，否则明显的定义Model较好**
+.
+
 ## 数据过滤
 
 数据过滤可以在前台或后台完成， 通过后台完成时 需要设置store的 remoteFilter: true .
@@ -141,4 +200,74 @@ st.reload();
             'msg' => '记得返回数据给前台'
         );
     }
+```
+
+## 前台操作
+
+### 创建新记录 Create Blank
+
+```html
+var store = Downq('grid').getStore();
+var Node = store.model;
+for(var i=0; i< 30; i++){
+   var tmp = new Node({'nid' : parseInt(Math.random() * 1000), 'update_time': Ext.Date.format(new Date(), 'Y-m-d H:i:s')});
+   store.insert(store.getCount(), tmp);
+}
+```
+
+### 拷贝记录 Copy OLD
+
+
+```html
+store.first()
+j {raw: Object, modified: Object, data: Object, hasListeners: l, events: Object…}
+store.first().$className
+"Ext.data.Store.ImplicitModel-ext-gen3319"
+
+var store = Downq('grid').getStore();
+var record= store.first();
+for(var i=0; i< 30; i++){
+   var rec = record.copy(); // clone the record
+   Ext.data.Model.id(rec); // automatically generate a unique sequential id
+   store.insert(store.getCount(), rec );
+}
+```
+
+
+### 过滤 FILTER
+
+```html
+var store = Downq('grid').getStore();
+store.remoteFilter=false;
+store.clearFilter();
+store.filter('USR_USERNAME', /^fun/);
+
+store.filter('USR_ROLE', 'user');
+store.filter('USR_USERNAME', /^a/);
+
+EQUAL
+store.filter([{property: 'USR_USERNAME', value: /^a/}, {property: 'USR_ROLE', value: 'user'}]);
+
+```
+
+
+### 过滤回调 FILTER BY
+
+```html
+store.filterBy(function(record, id) {
+   var due = record.get('USR_DUE_DATE');
+   if( due >= '2015-09-02' &&   due <= '2015-09-09') {
+       return true;
+   }
+   return false;
+});
+```
+
+
+### 排序 SORT
+
+```html
+var store = Downq('grid').getStore();
+store.remoteSort=false;
+store.sort('USR_USERNAME', 'desc');
 ```

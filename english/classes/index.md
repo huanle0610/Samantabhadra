@@ -3,6 +3,10 @@
 ### BI
 #### Salon Classes
 
+[BI12 Describing trends](salon/BIS11.md)
+
+[BI12 Preparing for meetings](salon/BIS12.md)
+
 [BI23 Describing System](salon/BIS23.md)
 
 [BI25 Customer Service](salon/BIS25.md)
@@ -13,6 +17,8 @@
 #### Private Classes
 
 [BI09](private/BI09.md)
+
+[BI10](private/BI10.md)
 
 
 ----
