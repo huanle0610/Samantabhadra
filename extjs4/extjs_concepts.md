@@ -7,7 +7,7 @@
 
 1和2属于规范，3、4、5、6属于必备基础。
 
-#### Component
+#### [Component and Layout](extjs_components.md)
 
 所有页面上的UI控件都是Component.
 
