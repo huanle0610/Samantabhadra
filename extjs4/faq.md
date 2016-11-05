@@ -38,3 +38,21 @@ viewConfig: {
 
 
 ### [combo分层级](http://runjs.cn/detail/rcmc4qms)
+
+
+### render button to grid column
+
+```html
+renderer: function (v, m, r) {
+    var id = Ext.id();
+    Ext.defer(function () {
+        Ext.widget('button', {
+            renderTo: id,
+            text: 'Edit: ' + r.get('name'),
+            width: 75,
+            handler: function () { Ext.Msg.alert('Info', r.get('name')) }
+        });
+    }, 50);
+    return Ext.String.format('<div id="{0}"></div>', id);
+}
+```

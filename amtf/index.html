@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2014净土大经科注</title>
+    <!--<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="text-style.css"/>
+</head>
+<body>
+<div class="container" ng-app="myApp" id="app">
+    <div  ng-controller="HomeCtrl as controller">
+        <div class="col-xs-12">
+            <h2 class="page-header">2014净土大经科注</h2>
+            <label><input type="checkbox" ng-model="controller.showFilter" />Filter</label>
+            <label><input type="checkbox" ng-model="controller.showList" />List</label>
+        </div>
+        <div>
+            <div class="globalplayer">
+                <div class="glp-mini">
+                    {{controller.currentVideoTitle}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 sidebar" ng-show="controller.showList">
+                    <div class="box-search" ng-show="controller.showFilter">
+                        <i class="fa fa-search"></i>
+                        <input class="input-search" type="text" ng-model="keyword" ng-input="controller.search($event)" ng-keydown="controller.searchKeydown($event)">
+                    </div>
+                    <ul class="list-group video-list" id="video-list">
+                        <li class="list-group-item" ng-repeat="item in controller.videos"><a
+                                ng-click="controller.setVideo($index)">{{$index+1}}
+                            {{item.text}}</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="videogular-container">
+                        <videogular vg-player-ready="controller.onPlayerReady($API)"
+                                    vg-complete="controller.onCompleteVideo()"
+                                    vg-theme="controller.config.theme.url">
+                            <vg-media vg-src="controller.config.sources" vg-type="audio"
+                                      vg-tracks="controller.config.tracks">
+                            </vg-media>
+
+                            <vg-controls>
+                                <vg-play-pause-button></vg-play-pause-button>
+                                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                                <vg-scrub-bar>
+                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                </vg-scrub-bar>
+                                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                                <vg-volume>
+                                    <vg-mute-button></vg-mute-button>
+                                    <vg-volume-bar></vg-volume-bar>
+                                </vg-volume>
+                                <vg-text vg-text-src="controller.config.plugins.subtitle"></vg-text>
+                                <!-- vg-text directive with subtile config var -->
+                                <vg-fullscreen-button></vg-fullscreen-button>
+                            </vg-controls>
+
+                            <vg-overlay-play></vg-overlay-play>
+                            <vg-buffering></vg-buffering>
+                            <vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
+                        </videogular>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="span1"></div>
+<div id="span2"></div>
+
+<script src="//cdn.bootcss.com/angular.js/1.5.8/angular.js"></script>
+<script src="//cdn.bootcss.com/angular.js/1.5.8/angular-sanitize.min.js"></script>
+
+
+<script src="videogular.js"></script>
+<script src="vg-controls.js"></script>
+
+<script src="vg-overlay-play.js"></script>
+<script src="vg-poster.js"></script>
+<script src="vg-buffering.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

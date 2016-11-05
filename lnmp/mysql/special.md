@@ -19,6 +19,37 @@ HAVING COUNT(
   ) > 1
 ```
 
+### 日期排除
+
+```html
+select *, DAYOFWEEK(t.createTime) as week_day from module t where ( 
+	(t.createTime between '2016-05-01 11:43:02' and '2016-06-01 11:43:02')
+	and (
+			t.createTime not between '2016-05-01 11:43:02' and '2016-05-03 11:43:02'
+			and
+			DAYOFWEEK(t.createTime) not in (6, 7)		
+		)
+)
+```
+
+
+### 多表join Update
+
+```html
+UPDATE product p, productPrice pp 
+SET pp.price = pp.price * 0.8 
+WHERE p.productId = pp.productId 
+AND p.dateCreated < '2004-01-01' 
+```
+
+
+```html
+UPDATE product p 
+INNER JOIN productPrice pp 
+ON p.productId = pp.productId 
+SET pp.price = pp.price * 0.8 
+WHERE p.dateCreated < '2004-01-01' 
+```
 
 ### 忘记root密码
 1. 停止MySQL

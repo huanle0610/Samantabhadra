@@ -1,0 +1,144 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+}
+.clearfix {
+    zoom: 1;
+}
+#app img.play{
+    display: block;
+}
+.globalplayer {
+    cursor: default;
+    position: fixed;
+    left: 0;
+    bottom: 116px;
+    z-index: 999;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.glp-mini {
+    position: fixed;
+    left: 0;
+    padding: 2px;
+    margin-top: 13px;
+    color: gold;
+    background: purple;
+}
+
+.video-list{
+    height: 500px;
+    overflow-y: auto;
+}
+
+.video-list a {
+    cursor: pointer;
+    color: #428bca;
+    text-decoration: none;
+}
+
+.video-list a:visited {
+    color: #428bca;
+}
+
+.video-list a:hover {
+    color: #428bca;
+    text-decoration: underline;
+}
+
+.videogular-container {
+    width: 100%;
+    height: 320px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.videogular-container .skipButton {
+    position: absolute;
+    padding: 10px;
+    top: 10px;
+    right: 10px;
+    z-index: 99999;
+    color: white;
+    cursor: pointer;
+    background-color: #666666;
+    border: 2px #FFFFFF solid;
+    display: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
+
+@media (min-width: 1200px) {
+    .videogular-container {
+        width: 100%;
+        height: 500px;
+    }
+
+    .videogular-container.audio {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .videogular-container {
+        width: 100%;
+        height: 500px;
+    }
+
+    .videogular-container.audio {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .videogular-container {
+        width: 100%;
+        height: 409.5px;
+    }
+
+    .videogular-container.audio {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+.sidebar .box-search .input-search {
+    background: #f0f0f0;
+}
+.sidebar .box-search .input-search:focus {
+    border: 1px solid #dfdfdf;
+}
+.sidebar .box-search .input-search:focus {
+    outline: none;
+}
+.sidebar .box-search .fa-search {
+    color: #ccc;
+}
+.sidebar .box-search .fa-search {
+    position: relative;
+    top: 39px;
+    left: 26px;
+}
+.sidebar .box-search .input-search {
+    display: block;
+    height: 32px;
+    width: 90%;
+    margin: 13px auto;
+    border: none;
+    border-radius: 32px;
+    padding: 4px 0 4px 30px;
+}
+input {
+    line-height: normal;
+}

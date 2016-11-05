@@ -8,3 +8,8 @@
 ## [English Words](extjs_english.md)
 ## [Dragfly相关](extjs_dragonfly.md)
 ## [Code snippet](extjs_snippet.md)
+
+
+# Ext JS6
+
+## [Work with Sencha Cmd](sencha_cmd.md)

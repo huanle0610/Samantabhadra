@@ -1,6 +1,8 @@
 ## Dragonfly
 Dragonfly 是一个使用Codeigniter3 + Extjs4 组合进行RIA(Rich Internet Application)开发的范例项目。
 
+Catch it from Github: [Dragonfly](https://github.com/huanle0610/dragonfly)
+
 请提前阅读
 
 * Codeigniter的手册（至少[CodeIgniter Overview部分](http://docs.php-admin.com/codeigniter3/overview/index.html){target=_blank}）
@@ -17,7 +19,8 @@ vagrant@precise64:/vagrant_data/dragonfly$ tree -L 1 -F
 |-- index.php         # 后台 the front controller of Codeigniter（一般不需要修改） 
 |-- readme.md
 |-- resources/        # 资源文件 css/image...
-`-- system/           # the core of Codeigniter（一般不需要修改）
+|-- extjs4/               # extjs4类库（一般不需要修改）
+`-- ci/           # the core of Codeigniter（一般不需要修改）
 ```
 app目录和application目录是我们前后台代码所安放之处。
 
@@ -141,5 +144,5 @@ NOTE：
 
 * V1.0 之前版本， 需要1、2、3 共三步；
 * V1.1 版本， 需要1、3 共两步；
-* V1.2 版本， 需要1、3 共两步；
+* V1.2 版本， 需要1、2、3 共两步；
     
