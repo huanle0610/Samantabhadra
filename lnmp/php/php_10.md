@@ -65,7 +65,7 @@ a = 1; b = 200;
 ```
 对应C语言里，就是传值与传址的那段论述。
 
-### 定界符
+### 定界符 Heredoc-specified strings 
 定界符内的引号不用转义，变量会被解析。
 ```php
 <?php
@@ -95,6 +95,45 @@ linux in a nutshell, "Did you read it?"
 linux windows
 ```
 [参考](http://php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc)
+
+
+### 练习
+
+#### 写一段代码解析出，linux常用命令。
+<iframe style="width: 100%; height: 300px" src="http://runjs.cn/code/ayeebu6l" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+```php
+...
+function parseCmdFromTable($table_html)
+{
+    
+}
+//最后两句代码及结果
+$cmd_list = parseCmdFromTable($table_html);
+echo $cmd_list;
+// cat, cd, chmod..._
+```
+#### 写一段代码解析出，常用php 字符串操作函数。
+<iframe style="width: 100%; height: 300px" src="http://runjs.cn/code/ltlakbfb" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+```php
+...
+function parseCmdFromHtml($html)
+{
+    
+}
+//最后两句代码及结果
+$function_list = parseCmdFromTable($my__html);
+echo $function_list;
+// substr, strlen,...
+```
+### 上题中的函数，按函数名字母顺序排序。
+### 同上，按函数名长短排序
+### 同上，函数名最长是多少位？最短是多少位？分别是哪些？
+### 已知一个多级菜单的SQL，和前端工程师给出的静态模板，请用php代码（从数据库中获取数据）实现该多级菜单？
+<iframe style="width: 100%; height: 300px" src="http://runjs.cn/code/wry9xqj1" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
 
 
 ## php 002 调试
