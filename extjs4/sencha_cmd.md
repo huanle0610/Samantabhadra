@@ -86,6 +86,39 @@ server {
 }
 ```
 
+```html
+ # (sencha cmd +  nginx)(Windows) + (php-cgi)(Linux)
+ server {
+        listen 80;
+        server_name enjoy-web.demo.com;
+        root   D:\projects\eapp\ext6_web;
+
+        set $linux_root   /var/project/webroot;
+
+        index index.html index.htm index.php ;
+
+        location ~* \.(css|js)(\?[0-9]+)?$ {
+            proxy_pass http://localhost:1841; 
+        }
+
+        location ~* /~(sass|cmd)/ {
+            proxy_pass http://localhost:1841; 
+        }
+
+        location / {
+            try_files $uri $uri/ /index.php;
+        }
+
+        location ~ \.php$ {
+                include        fastcgi_params;
+                fastcgi_pass   10.3.3.3:9000;
+                fastcgi_index  index.php;
+                fastcgi_param  CI_ENV development;
+                fastcgi_param  SCRIPT_FILENAME    $linux_root/$fastcgi_script_name;
+                fastcgi_read_timeout 3600;
+         }
+    }
+```
 
 ---
 Links:
