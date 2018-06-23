@@ -65,6 +65,9 @@
     }
 ```
 
+## [配合Sencha Cmd进行Extjs6开发](../../extjs4/sencha_cmd.md)
+
+
 ## 文件上传
 
 文件上传是一个复杂的问题

@@ -93,7 +93,7 @@ server {
         server_name enjoy-web.demo.com;
         root   D:\projects\eapp\ext6_web;
 
-        set $linux_root   /var/project/webroot;
+        set $cgi_root   /var/project/webroot;
 
         index index.html index.htm index.php ;
 
@@ -114,7 +114,7 @@ server {
                 fastcgi_pass   10.3.3.3:9000;
                 fastcgi_index  index.php;
                 fastcgi_param  CI_ENV development;
-                fastcgi_param  SCRIPT_FILENAME    $linux_root/$fastcgi_script_name;
+                fastcgi_param  SCRIPT_FILENAME    $cgi_root/$fastcgi_script_name;
                 fastcgi_read_timeout 3600;
          }
     }
