@@ -223,25 +223,25 @@
 ###! **Be careful not to break the indentation in the ldap_servers block. It is
 ###!   in yaml format and the spaces must be retained. Using tabs will not work.**
 
-# gitlab_rails['ldap_enabled'] = false
+gitlab_rails['ldap_enabled'] = true 
 
 ###! **remember to close this block with 'EOS' below**
-# gitlab_rails['ldap_servers'] = YAML.load <<-'EOS'
-#   main: # 'main' is the GitLab 'provider ID' of this LDAP server
-#     label: 'LDAP'
-#     host: '_your_ldap_server'
-#     port: 389
-#     uid: 'sAMAccountName'
-#     bind_dn: '_the_full_dn_of_the_user_you_will_bind_with'
-#     password: '_the_password_of_the_bind_user'
-#     encryption: 'plain' # "start_tls" or "simple_tls" or "plain"
-#     verify_certificates: true
-#     active_directory: true
-#     allow_username_or_email_login: false
-#     lowercase_usernames: false
-#     block_auto_created_users: false
-#     base: ''
-#     user_filter: ''
+gitlab_rails['ldap_servers'] = YAML.load <<-'EOS'
+   main: # 'main' is the GitLab 'provider ID' of this LDAP server
+     label: 'LDAP'
+     host: '192.168.9.102'
+     port: 389
+     uid: 'sAMAccountName'
+     bind_dn: 'cn=amtf,cn=users,dc=man,dc=com'
+     password: 'Qwer123$'
+     encryption: 'plain' # "start_tls" or "simple_tls" or "plain"
+     verify_certificates: false 
+     active_directory: true
+     allow_username_or_email_login: true 
+     lowercase_usernames: false
+     block_auto_created_users: true 
+     base: 'DC=man,DC=com'
+     user_filter: '(&(objectclass=user))'
 #     ## EE only
 #     group_base: ''
 #     admin_group: ''
@@ -266,28 +266,44 @@
 #     group_base: ''
 #     admin_group: ''
 #     sync_ssh_keys: false
-# EOS
+EOS
 
 ### OmniAuth Settings
 ###! Docs: https://docs.gitlab.com/ce/integration/omniauth.html
-# gitlab_rails['omniauth_enabled'] = false
-# gitlab_rails['omniauth_allow_single_sign_on'] = ['saml']
+gitlab_rails['omniauth_enabled'] = true 
+gitlab_rails['omniauth_allow_single_sign_on'] = ['oauth2_generic']
 # gitlab_rails['omniauth_sync_email_from_provider'] = 'saml'
 # gitlab_rails['omniauth_sync_profile_from_provider'] = ['saml']
 # gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
 # gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'saml'
-# gitlab_rails['omniauth_block_auto_created_users'] = true
-# gitlab_rails['omniauth_auto_link_ldap_user'] = false
+gitlab_rails['omniauth_block_auto_created_users'] = true
+gitlab_rails['omniauth_auto_link_ldap_user'] = true
 # gitlab_rails['omniauth_auto_link_saml_user'] = false
 # gitlab_rails['omniauth_external_providers'] = ['twitter', 'google_oauth2']
-# gitlab_rails['omniauth_providers'] = [
-#   {
-#     "name" => "google_oauth2",
-#     "app_id" => "YOUR APP ID",
-#     "app_secret" => "YOUR APP SECRET",
-#     "args" => { "access_type" => "offline", "approval_prompt" => "" }
-#   }
-# ]
+gitlab_rails['omniauth_providers'] = [
+   {
+     "name" => "oauth2_generic",
+     "app_id" => "922d4cbe-9be4-4ac5-8027-8681ee6cc2db",
+     "app_secret" => "YOURAPPSECRET",
+     'args' => {
+	      client_options: {
+		'site' => 'http://hub.example.com:8893', # including port if necessary
+		"user_info_url" => "/hub/api/rest/users/me",
+        	"authorize_url" => "/hub/api/rest/oauth2/auth?response_type=token&redirect_uri=http%3A%2F%2Fgitlab.example.com&request_credentials=default&client_id=922d4cbe-9be4-4ac5-8027-8681ee6cc2db&scope=0-0-0-0-0",
+        	"token_url" => "/hub/api/rest/oauth2/token"
+	      },
+	      user_response_structure: {
+		root_path: [], # i.e. if attributes are returned in JsonAPI format (in a 'user' node nested under a 'data' node)
+		attributes: { nickname: 'login', name: 'name' } # if the nickname attribute of a user is called 'username'
+	      },
+	      # optionally, you can add the following two lines to "white label" the display name
+	      # of this strategy (appears in urls and Gitlab login buttons)
+	      # If you do this, you must also replace oauth2_generic, everywhere it appears above, with the new name. 
+	      name: 'Hub', # display name for this strategy
+	      strategy_class: "OmniAuth::Strategies::OAuth2Generic" # Devise-specific config option Gitlab uses to find renamed strategy
+    }
+   }
+ ]
 
 ### Backup Settings
 ###! Docs: https://docs.gitlab.com/omnibus/settings/backups.html
