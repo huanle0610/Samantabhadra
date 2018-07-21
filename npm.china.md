@@ -14,3 +14,28 @@ npm set node_inspector_cdnurl https://npm.taobao.org/mirrors/node-inspector # no
 
 npm cache clean --force # 清空缓存
 ```
+
+```bash
+[amtf@amtf-s3 xx-net]$ npm search vue
+npm WARN search fast search endpoint errored. Using old search.
+npm WARN Failed to read search cache. Rebuilding
+npm WARN Building the local index for the first time, please be patient
+npm ERR! No search sources available
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/amtf/.npm/_logs/2018-07-21T09_49_45_202Z-debug.log
+[amtf@amtf-s3 xx-net]$ npm search --registry=http://registry.npmjs.org/ vue
+NAME                      | DESCRIPTION          | AUTHOR          | DATE       | VERSION  | KEYWORDS          
+vue-router                | Official router for… | =yyx990803      | 2017-10-13 | 3.0.1    | vue router routing
+vue-resource              | The HTTP client for… | =steffans…      | 2018-05-20 | 1.5.1    | vue xhr http ajax
+```
+
+```bash
+echo "alias npm-search='npm search --registry=http://registry.npmjs.org/'" >> ~/.bashrc
+source ~/.bashrc
+[amtf@amtf-s3 xx-net]$ echo "alias npm-search='npm search --registry=http://registry.npmjs.org/'" >> ~/.bashrc
+[amtf@amtf-s3 xx-net]$ source ~/.bashrc
+[amtf@amtf-s3 xx-net]$ npm-search vue
+NAME                      | DESCRIPTION          | AUTHOR          | DATE       | VERSION  | KEYWORDS          
+vue-router                | Official router for… | =yyx990803      | 2017-10-13 | 3.0.1    | vue router routing
+```
