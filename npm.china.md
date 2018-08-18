@@ -39,3 +39,9 @@ source ~/.bashrc
 NAME                      | DESCRIPTION          | AUTHOR          | DATE       | VERSION  | KEYWORDS          
 vue-router                | Official router for… | =yyx990803      | 2017-10-13 | 3.0.1    | vue router routing
 ```
+
+Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/electron/.electron'
+
+```bash
+[amtf@s3-amtf ~]$ sudo proxychains4 npm install -g @vue/devtools --unsafe-perm=true --allow-root
+```
