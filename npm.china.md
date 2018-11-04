@@ -45,3 +45,7 @@ Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/electron/.e
 ```bash
 [amtf@s3-amtf ~]$ sudo proxychains4 npm install -g @vue/devtools --unsafe-perm=true --allow-root
 ```
+
+```
+cross-env CYPRESS_INSTALL_BINARY=http://npm.taobao.org/mirrors/cypress/3.1.1/win64/cypress.zip yarn
+```
