@@ -1,0 +1,22 @@
+[root@c75 jsonforms]# timedatectl set-timezone Asia/Shanghai
+[root@c75 jsonforms]# timedatectl
+      Local time: Tue 2019-04-09 14:48:20 CST
+  Universal time: Tue 2019-04-09 06:48:20 UTC
+        RTC time: Sat 2019-04-13 23:31:38
+       Time zone: Asia/Shanghai (CST, +0800)
+     NTP enabled: yes
+NTP synchronized: no
+ RTC in local TZ: no
+      DST active: n/a
+[root@c75 jsonforms]# yum install -y ntpdate
+[root@c75 jsonforms]# ntpdate ntp3.aliyun.com
+14 Apr 07:33:33 ntpdate[34169]: step time server 203.107.6.88 offset 405745.762517 sec
+[root@c75 jsonforms]# timedatectl
+      Local time: Sun 2019-04-14 07:33:38 CST
+  Universal time: Sat 2019-04-13 23:33:38 UTC
+        RTC time: Sat 2019-04-13 23:34:16
+       Time zone: Asia/Shanghai (CST, +0800)
+     NTP enabled: yes
+NTP synchronized: no
+ RTC in local TZ: no
+      DST active: n/a
